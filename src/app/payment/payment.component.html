@@ -1,0 +1,52 @@
+<form [formGroup]="f" (ngSubmit)="submit(f.value)">
+  <div class="form-input">
+    <label for="mId">Merchant ID <span class="required"></span></label>
+    <input id="mId" type="text" formControlName="merchantId">
+  </div>
+  <div class="form-input">
+    <label for="sId">Store ID <span class="required"></span></label>
+    <input id="sId" type="text" formControlName="storeId">
+  </div>
+  <div class="form-input">
+    <label for="tId">Terminal ID <span class="required"></span></label>
+    <input id="tId" type="text" formControlName="terminalId">
+  </div>
+  <div class="form-input">
+    <label for="txId">Tx ID <span class="required"></span></label>
+    <input id="txId" type="text" formControlName="txId">
+  </div>
+  <div class="form-input">
+    <label for="amt">Amount <span class="required"></span></label>
+    <input id="amt" type="number" formControlName="amt">
+  </div>
+  <div class="form-input">
+    <label for="currency">Currency <span class="required"></span></label>
+    <input id="currency" type="text" formControlName="currency">
+  </div>
+  <div class="form-input">
+    <label for="accToken">Account Token </label>
+    <input id="accToken" type="text" formControlName="accountToken">
+  </div>
+  <div class="form-input">
+    <label for="ssURL">Success Url </label>
+    <input id="ssURL" type="text" formControlName="successUrl">
+  </div>
+  <div class="form-input">
+    <label for="fURL">Fail Url </label>
+    <input id="fURL" type="text" formControlName="failUrl">
+  </div>
+  <div class="form-input">
+    <label for="cURL">Callback Api Url </label>
+    <input id="cURL" type="text" formControlName="callbackApiUrl">
+  </div>
+  <div class="form-input">
+    <label for="description">Description </label>
+    <input id="description" type="text" formControlName="description">
+  </div>
+  <div class="form-input">
+    <label for="timestamp">Timestamp <span class="required"></span></label>
+    <input id="timestamp" type="text" formControlName="timestamp">
+  </div>
+  <br>
+  <input type="submit" value="Submit" [disabled]="!f.valid">
+</form>
