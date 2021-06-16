@@ -4,15 +4,15 @@ import {environment} from '../../environments/environment';
 import {PaymentResponseModel} from '../_models/payment.model';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class PaymentService {
-  apiUrl = environment.apiUrl;
+    apiUrl = environment.apiUrl;
 
-  constructor(private httpClient: HttpClient) {
-  }
+    constructor(private httpClient: HttpClient) {
+    }
 
-  callPayment(value: any) {
-    return this.httpClient.post<PaymentResponseModel>(`${this.apiUrl}/payment/sale`, {value});
-  }
+    callPayment(value: any) {
+        return this.httpClient.post<PaymentResponseModel>(`${this.apiUrl}/payment/sale`,  value);
+    }
 }

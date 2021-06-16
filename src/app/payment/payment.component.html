@@ -47,6 +47,10 @@
     <label for="timestamp">Timestamp <span class="required"></span></label>
     <input id="timestamp" type="text" formControlName="timestamp">
   </div>
+  <div class="form-input">
+    <label for="sKey">Secret Key <span class="required"></span></label>
+    <input id="sKey" type="text" formControlName="secretKey">
+  </div>
   <br>
   <input type="submit" value="Submit" [disabled]="!f.valid">
 </form>

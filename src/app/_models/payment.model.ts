@@ -12,6 +12,7 @@ export interface PaymentRequestModel {
   description: string;
   timestamp: number;
   hash: string;
+  secretKey: string;
 }
 
 export interface PaymentResponseModel {

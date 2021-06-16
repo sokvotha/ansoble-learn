@@ -11,7 +11,7 @@ export class HelperService {
     constructor() {
     }
 
-    generate(text: string): string {
-        return Base64.stringify(hmacSHA512(text, this.privateKey));
+    generate(text: string, key: string): string {
+        return Base64.stringify(hmacSHA512(text, key));
     }
 }
