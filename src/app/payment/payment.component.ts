@@ -43,7 +43,7 @@ export class PaymentComponent implements OnInit {
             (res) => {
                 console.log(res);
                 if (res.response.code === 200) {
-                    window.location.href = res.result.url;
+                   window.location.href = res.result.url;
                 } else {
                     console.log(res.response);
                 }
