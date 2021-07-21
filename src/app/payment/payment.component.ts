@@ -16,18 +16,34 @@ export class PaymentComponent implements OnInit {
     }
 
     ngOnInit() {
+        // this.f = this.fb.group({
+        //     merchantId: ['900010000080004', Validators.required],
+        //     secretKey: ['6H6dQ1pl6xL5sh6P6RougWK62+5dei27FsQ8PjV/3/BxHiEpfKw7uVdCLxJ/AFCSi6NnO6u65+Rb5bNXciyC4A==', Validators.required],
+        //     storeId: ['800010000080001', Validators.required],
+        //     terminalId: ['70000001', Validators.required],
+        //     txId: [new Date().getTime(), Validators.required],
+        //     amt: [5.00, Validators.required],
+        //     currency: ['USD', Validators.required],
+        //     accountToken: '',
+        //     successUrl: 'http://localhost:4000/#/success/',
+        //     failUrl: 'http://localhost:4000/#/fail/',
+        //     callbackApiUrl: 'https://6dc6e413cc50.ngrok.io/cashier/amk/callback/callback',
+        //     description: 'Product A, Product B',
+        //     timestamp: new Date().getTime(),
+        //     hash: ''
+        // });
         this.f = this.fb.group({
-            merchantId: ['900010000080001', Validators.required],
-            secretKey: ['hXjb6TwiR5tarQyCdgaamKP21PHrW+owm2ChyBBLn5l3nrkF9ZtDJPghnt0rpZrDB+gmteXD/sounEtaI/UVxA==', Validators.required],
-            storeId: ['800010000080001', Validators.required],
-            terminalId: ['70000001', Validators.required],
+            merchantId: ['900010000080006', Validators.required],
+            secretKey: ['dvSR9CX6+/kInDwIOmNTk75gJ9ARLadfHFH/Ej3PMSyLtdb1KtGoWHZW7s5U+hBvk6DCHPaV8qFYfgVYabCO0A==', Validators.required],
+            storeId: ['800010000080002', Validators.required],
+            terminalId: ['70000011', Validators.required],
             txId: [new Date().getTime(), Validators.required],
             amt: [5.00, Validators.required],
             currency: ['USD', Validators.required],
             accountToken: '',
             successUrl: 'http://localhost:4000/#/success/',
             failUrl: 'http://localhost:4000/#/fail/',
-            callbackApiUrl: '',
+            callbackApiUrl: 'http://update-status.domain.com/payment/',
             description: 'Product A, Product B',
             timestamp: new Date().getTime(),
             hash: ''
