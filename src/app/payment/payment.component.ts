@@ -17,9 +17,9 @@ export class PaymentComponent implements OnInit {
 
     ngOnInit() {
         this.f = this.fb.group({
-            merchantId: ['900010000080001', Validators.required],
-            secretKey: ['hXjb6TwiR5tarQyCdgaamKP21PHrW+owm2ChyBBLn5l3nrkF9ZtDJPghnt0rpZrDB+gmteXD/sounEtaI/UVxA==', Validators.required],
-            storeId: ['800010000080001', Validators.required],
+            merchantId: ['901010000010001', Validators.required],
+            secretKey: ['hQNV0EFm4IlfIdS003zgN4NAl9swKN/1bWVqC/8kRt73BcnxXUjXqOJ8yWF4za64erD+zcFOGzMjJMqS7uWHvQ==', Validators.required],
+            storeId: ['801010000010001', Validators.required],
             terminalId: ['70000001', Validators.required],
             txId: [new Date().getTime(), Validators.required],
             amt: [5.00, Validators.required],
