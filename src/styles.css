@@ -16,6 +16,7 @@ body {
 
 .form-input input {
   width: 500px;
+  padding: 4px 6px;
 }
 
 .required:after {
@@ -26,4 +27,5 @@ body {
 input[type=submit] {
   width: 100px;
   cursor: pointer;
+  padding: 4px 6px;
 }

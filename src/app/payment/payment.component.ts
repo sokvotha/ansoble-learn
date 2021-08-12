@@ -33,17 +33,17 @@ export class PaymentComponent implements OnInit {
         //     hash: ''
         // });
         this.f = this.fb.group({
-            merchantId: ['900010000080006', Validators.required],
-            secretKey: ['dvSR9CX6+/kInDwIOmNTk75gJ9ARLadfHFH/Ej3PMSyLtdb1KtGoWHZW7s5U+hBvk6DCHPaV8qFYfgVYabCO0A==', Validators.required],
-            storeId: ['800010000080002', Validators.required],
-            terminalId: ['70000011', Validators.required],
+            merchantId: ['900010000080001', Validators.required],
+            secretKey: ['hXjb6TwiR5tarQyCdgaamKP21PHrW+owm2ChyBBLn5l3nrkF9ZtDJPghnt0rpZrDB+gmteXD/sounEtaI/UVxA==', Validators.required],
+            storeId: ['800010000080001', Validators.required],
+            terminalId: ['70000001', Validators.required],
             txId: [new Date().getTime(), Validators.required],
             amt: [5.00, Validators.required],
             currency: ['USD', Validators.required],
             accountToken: '',
             successUrl: 'http://localhost:4000/#/success/',
             failUrl: 'http://localhost:4000/#/fail/',
-            callbackApiUrl: 'http://update-status.domain.com/payment/',
+            callbackApiUrl: '',
             description: 'Product A, Product B',
             timestamp: new Date().getTime(),
             hash: ''
