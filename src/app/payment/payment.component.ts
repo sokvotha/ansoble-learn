@@ -38,7 +38,7 @@ export class PaymentComponent implements OnInit {
             storeId: ['800010000080001', Validators.required],
             terminalId: ['70000001', Validators.required],
             txId: [new Date().getTime(), Validators.required],
-            amt: [5.00, Validators.required],
+            amt: [0.01, Validators.required],
             currency: ['USD', Validators.required],
             accountToken: '',
             successUrl: 'http://localhost:4000/#/success/',
