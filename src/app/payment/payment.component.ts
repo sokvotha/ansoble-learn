@@ -33,10 +33,10 @@ export class PaymentComponent implements OnInit {
         //     hash: ''
         // });
         this.f = this.fb.group({
-            merchantId: ['900010000080001', Validators.required],
-            secretKey: ['hXjb6TwiR5tarQyCdgaamKP21PHrW+owm2ChyBBLn5l3nrkF9ZtDJPghnt0rpZrDB+gmteXD/sounEtaI/UVxA==', Validators.required],
-            storeId: ['800010000080001', Validators.required],
-            terminalId: ['70000001', Validators.required],
+            merchantId: ['901030000010003', Validators.required],
+            secretKey: ['BImaG5rvMjGm3x/krF1M8p3mprE2j4j+uxgpybdnmEKz30dFF+Mnk+tMOBIzE58cZJCrtVXi+rNbvaW3eceUlA==', Validators.required],
+            storeId: ['800010000010001', Validators.required],
+            terminalId: ['70000015', Validators.required],
             txId: [new Date().getTime(), Validators.required],
             amt: [0.01, Validators.required],
             currency: ['USD', Validators.required],
@@ -55,6 +55,9 @@ export class PaymentComponent implements OnInit {
             `${value.merchantId}.${value.storeId}.${value.terminalId}.${value.txId}.${value.amt}.${value.currency}.${value.timestamp}`;
         console.log(data);
         value.hash = this.helperService.generate(data, value.secretKey);
+        setTimeout( () => {
+            console.log('value ', value);
+        });
         this.paymentService.callPayment(value).subscribe(
             (res) => {
                 console.log(res);
