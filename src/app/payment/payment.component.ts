@@ -16,13 +16,29 @@ export class PaymentComponent implements OnInit {
     }
 
     ngOnInit() {
+        // this.f = this.fb.group({
+        //     merchantId: ['900010000080004', Validators.required],
+        //     secretKey: ['6H6dQ1pl6xL5sh6P6RougWK62+5dei27FsQ8PjV/3/BxHiEpfKw7uVdCLxJ/AFCSi6NnO6u65+Rb5bNXciyC4A==', Validators.required],
+        //     storeId: ['800010000080001', Validators.required],
+        //     terminalId: ['70000001', Validators.required],
+        //     txId: [new Date().getTime(), Validators.required],
+        //     amt: [5.00, Validators.required],
+        //     currency: ['USD', Validators.required],
+        //     accountToken: '',
+        //     successUrl: 'http://localhost:4000/#/success/',
+        //     failUrl: 'http://localhost:4000/#/fail/',
+        //     callbackApiUrl: 'https://6dc6e413cc50.ngrok.io/cashier/amk/callback/callback',
+        //     description: 'Product A, Product B',
+        //     timestamp: new Date().getTime(),
+        //     hash: ''
+        // });
         this.f = this.fb.group({
             merchantId: ['901030000010003', Validators.required],
             secretKey: ['BImaG5rvMjGm3x/krF1M8p3mprE2j4j+uxgpybdnmEKz30dFF+Mnk+tMOBIzE58cZJCrtVXi+rNbvaW3eceUlA==', Validators.required],
             storeId: ['800010000010001', Validators.required],
             terminalId: ['70000015', Validators.required],
             txId: [new Date().getTime(), Validators.required],
-            amt: [5.00, Validators.required],
+            amt: [0.01, Validators.required],
             currency: ['USD', Validators.required],
             accountToken: '',
             successUrl: 'http://localhost:4000/#/success/',
@@ -46,7 +62,7 @@ export class PaymentComponent implements OnInit {
             (res) => {
                 console.log(res);
                 if (res.response.code === 200) {
-                    window.location.href = res.result.url;
+                   window.location.href = res.result.url;
                 } else {
                     console.log(res.response);
                 }

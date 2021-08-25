@@ -3,8 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:8081/v1/api'
+    production: false,
+    apiUrl: 'http://localhost:8081/v1/api'
+    // apiUrl: 'https://mms-uat.amkcambodia.com:444/amkpayway/v1/api'
 };
 
 /*
