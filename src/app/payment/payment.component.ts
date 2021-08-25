@@ -17,10 +17,10 @@ export class PaymentComponent implements OnInit {
 
     ngOnInit() {
         this.f = this.fb.group({
-            merchantId: ['901010000010001', Validators.required],
-            secretKey: ['hQNV0EFm4IlfIdS003zgN4NAl9swKN/1bWVqC/8kRt73BcnxXUjXqOJ8yWF4za64erD+zcFOGzMjJMqS7uWHvQ==', Validators.required],
-            storeId: ['801010000010001', Validators.required],
-            terminalId: ['70000001', Validators.required],
+            merchantId: ['901030000010003', Validators.required],
+            secretKey: ['BImaG5rvMjGm3x/krF1M8p3mprE2j4j+uxgpybdnmEKz30dFF+Mnk+tMOBIzE58cZJCrtVXi+rNbvaW3eceUlA==', Validators.required],
+            storeId: ['800010000010001', Validators.required],
+            terminalId: ['70000015', Validators.required],
             txId: [new Date().getTime(), Validators.required],
             amt: [5.00, Validators.required],
             currency: ['USD', Validators.required],
@@ -39,6 +39,9 @@ export class PaymentComponent implements OnInit {
             `${value.merchantId}.${value.storeId}.${value.terminalId}.${value.txId}.${value.amt}.${value.currency}.${value.timestamp}`;
         console.log(data);
         value.hash = this.helperService.generate(data, value.secretKey);
+        setTimeout( () => {
+            console.log('value ', value);
+        });
         this.paymentService.callPayment(value).subscribe(
             (res) => {
                 console.log(res);
