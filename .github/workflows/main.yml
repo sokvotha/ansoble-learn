@@ -3,14 +3,18 @@ name: Trigger Workflow
 on:
   push:
     branches:
-      - development
+      - votha
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
+jobs:
+  build:
+    runs-on: ubuntu-latest
 
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: add cert
+        shell: bash
+        run: ls
 
       # Add your desired actions here
