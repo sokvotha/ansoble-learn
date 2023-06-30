@@ -16,6 +16,13 @@ jobs:
       - name: add cert
         shell: bash
         run: |
-          ls
+          mkdir -p keys
+          touch ./keys/ansible_key.pem
+          echo -e "${{secrets,PRKEY}}" > ./keys/ansible_key.pem
+      - name: Execute Ansible Playbook
+        uses: saubermacherag/ansible-playbook-docker-action@v1.4
+        with:
+          playbookName: './ansible/ansible-playbook.yml'
+          inventoryFile: './ansible/inventory.ini'
 
       # Add your desired actions here
