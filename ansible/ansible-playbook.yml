@@ -1,0 +1,58 @@
+---
+- name: Clone file from Git
+  hosts: webservers  # Replace with the host/group name of the server(s)
+
+  tasks:
+    - name: Clone repository
+      git:
+        repo: https://github.com/sokvotha/ansoble-learn.git  # Replace with the URL of the Git repository
+        dest: /tmp/web-payment/  # Replace with the path where you want to clone the repository
+        version: master  # Replace with the branch, tag, or commit you want to clone
+
+    - name: Install Node.js and npm
+      become: true
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Install npm package manager
+      become: true
+      apt:
+        name: npm
+        state: present
+
+    - name: Install Angular CLI
+      become: true
+      npm:
+        name: '@angular/cli@8'
+        global: yes
+
+    - name: Install @angular-devkit/build-angular
+      become: true
+      npm:
+        name: '@angular-devkit/build-angular'
+        global: yes
+
+    - name: Install Angular Dependencies
+      become: true
+      command: npm install
+
+    - name: Set directory permissions
+      become: true
+      file:
+        path: /tmp/web-payment
+        owner: root
+        # group: <groupname>
+        mode: '0755'
+
+    - name: Execute Angular build command
+      become: true
+      command: npm run build
+      args:
+        chdir: /tmp/web-payment/
+
+    - name: Copy Angular build output to remote server
+      copy:
+        src: /tmp/web-payment/dist/payment-demo/  # Replace with the path to the file inside the cloned repository
+        dest: /var/www/html/payment-demo  # Replace with the path to the destination on the server
+        remote_src: yes
