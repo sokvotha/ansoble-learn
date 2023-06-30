@@ -52,7 +52,8 @@
         chdir: /tmp/web-payment/
 
     - name: Copy Angular build output to remote server
-      copy:
+      synchronize:
         src: /tmp/web-payment/dist/payment-demo/  # Replace with the path to the file inside the cloned repository
         dest: /var/www/html/payment-demo  # Replace with the path to the destination on the server
-        remote_src: yes
+        delete: yes
+
