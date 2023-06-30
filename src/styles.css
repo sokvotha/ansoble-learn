@@ -1,0 +1,31 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0 auto;
+}
+
+.content {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.form-input label {
+  display: block;
+  padding-top: 10px;
+}
+
+.form-input input {
+  width: 500px;
+  padding: 4px 6px;
+}
+
+.required:after {
+  content: '*';
+  color: #FF0000;
+}
+
+input[type=submit] {
+  width: 100px;
+  cursor: pointer;
+  padding: 4px 6px;
+}
