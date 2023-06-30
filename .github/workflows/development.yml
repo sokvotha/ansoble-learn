@@ -18,7 +18,7 @@ jobs:
         run: |
           mkdir -p keys
           touch ./keys/ansible_key.pem
-          echo -e "${{secrets,PRKEY}}" > ./keys/ansible_key.pem
+          echo -e "${{secrets.PRKEY}}" > ./keys/ansible_key.pem
       - name: Execute Ansible Playbook
         uses: saubermacherag/ansible-playbook-docker-action@v1.4
         with:
