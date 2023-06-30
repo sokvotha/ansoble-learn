@@ -16,7 +16,6 @@ jobs:
       - name: add cert
         shell: bash
         run: |
-        pwd
-        ls
+          ls
 
       # Add your desired actions here
