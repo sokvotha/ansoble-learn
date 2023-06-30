@@ -33,17 +33,17 @@ export class PaymentComponent implements OnInit {
         //     hash: ''
         // });
         this.f = this.fb.group({
-            merchantId: ['901030000010003', Validators.required],
-            secretKey: ['BImaG5rvMjGm3x/krF1M8p3mprE2j4j+uxgpybdnmEKz30dFF+Mnk+tMOBIzE58cZJCrtVXi+rNbvaW3eceUlA==', Validators.required],
-            storeId: ['800010000010001', Validators.required],
-            terminalId: ['70000015', Validators.required],
+            merchantId: ['913010000000036', Validators.required],
+            secretKey: ['DgNcno21k9FabG33ELF9QrXY39dy1HPOnW8JMJ474/ccJyWntFc8MJpXmVN+mp1rUzZCuY0+mOQ924TjBn5hoQ==', Validators.required],
+            storeId: ['813010000000004', Validators.required],
+            terminalId: ['70000003', Validators.required],
             txId: [new Date().getTime(), Validators.required],
-            amt: [0.01, Validators.required],
+            amt: [5, Validators.required],
             currency: ['USD', Validators.required],
             accountToken: '',
-            successUrl: 'http://localhost:4000/#/success/',
-            failUrl: 'http://localhost:4000/#/fail/',
-            callbackApiUrl: '',
+            successUrl: 'http://192.168.4.21:4000/#/success/',
+            failUrl: 'http://192.168.4.21:4000/#/fail/',
+            callbackApiUrl: 'http://localhost:8000/v1/api/setting/confirm-payment-from-amkpayway',
             description: 'Product A, Product B',
             timestamp: new Date().getTime(),
             hash: ''
