@@ -1,5 +1,5 @@
 ---
-- name: Clone file from Git
+- name: Execute playbook development branch
   hosts: webservers  # Replace with the host/group name of the server(s)
 
   tasks:
@@ -13,18 +13,43 @@
       apt:
         name: git
         state: present
-        
-    - name: Clone repository
+
+    - name: Clone project from git repository
       git:
         repo: https://github.com/sokvotha/ansoble-learn.git  # Replace with the URL of the Git repository
         dest: /tmp/web-payment/  # Replace with the path where you want to clone the repository
         version: development  # Replace with the branch, tag, or commit you want to clone
 
-    - name: Install Node.js and npm
-      become: true
-      apt:
-        name: nodejs
-        state: present
+- name: Install Node.js v14
+  hosts: webservers  # Replace with the host/group name of the server(s)
+
+  tasks:
+    - name: Install nvm
+      git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=v0.33.11
+      tags: nvm
+
+    - name: Source nvm in ~/.{{ item }}
+      lineinfile: >
+          dest=~/.{{ item }}
+          line="source ~/.nvm/nvm.sh"
+          create=yes
+      tags: nvm
+      with_items:
+        - bashrc
+        - profile
+
+    - name: Install node and set version
+      become: yes
+      become_user: root
+      shell: "source /root/.nvm/nvm.sh && nvm install 8.11.3" 
+      args:
+        executable: /bin/bash
+
+    # - name: Install Node.js
+    #   become: true
+    #   apt:
+    #     name: nodejs
+    #     state: present
 
     - name: Install npm package manager
       become: true
