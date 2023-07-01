@@ -96,7 +96,7 @@
 
     - name: Execute Angular build command
       become: true
-      command: ng build --prod
+      command: npm run build
       args:
         chdir: /tmp/web-payment/
 
