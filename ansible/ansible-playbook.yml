@@ -76,10 +76,6 @@
         name: '@angular-devkit/build-angular'
         global: yes
 
-    # - name: Disable the version mismatch warning
-    #   become: true
-    #   command: ng config -g cli.warnings.versionMismatch false
-
     - name: Install Angular Dependencies
       become: true
       command:  npm install
