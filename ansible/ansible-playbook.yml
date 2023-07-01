@@ -41,7 +41,7 @@
     - name: Install node and set version
       become: yes
       become_user: root
-      shell: "source /root/.nvm/nvm.sh && nvm install 14.x" 
+      shell: "source /root/.nvm/nvm.sh && nvm install 14.15.0" 
       args:
         executable: /bin/bash
 
