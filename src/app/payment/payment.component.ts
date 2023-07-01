@@ -40,7 +40,7 @@ export class PaymentComponent implements OnInit {
             txId: [new Date().getTime(), Validators.required],
             amt: [50, Validators.required],
             currency: ['USD', Validators.required],
-            accountToken: 'votha-tokent-89980-ancb-7976',
+            accountToken: 'votha-tokent-89980-ancb-7976-99098',
             successUrl: 'http://192.168.4.21:4000/#/success/',
             failUrl: 'http://192.168.4.21:4000/#/fail/',
             callbackApiUrl: 'http://localhost:8000/v1/api/setting/confirm-payment-from-amkpayway',
