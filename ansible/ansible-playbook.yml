@@ -68,7 +68,7 @@
     - name: Install Angular CLI
       become: true
       npm:
-        name: '@angular/cli@8'
+        name: '@angular/cli@8.3.29'
         global: yes
 
     - name: Install @angular-devkit/build-angular
