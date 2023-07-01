@@ -7,7 +7,7 @@
       git:
         repo: https://github.com/sokvotha/ansoble-learn.git  # Replace with the URL of the Git repository
         dest: /tmp/web-payment/  # Replace with the path where you want to clone the repository
-        version: master  # Replace with the branch, tag, or commit you want to clone
+        version: development  # Replace with the branch, tag, or commit you want to clone
 
     - name: Install Node.js and npm
       become: true
@@ -37,13 +37,13 @@
       become: true
       command: npm install
 
-    - name: Set directory permissions
-      become: true
-      file:
-        path: /tmp/web-payment
-        owner: root
-        # group: <groupname>
-        mode: '0755'
+    # - name: Set directory permissions
+    #   become: true
+    #   file:
+    #     path: /tmp/web-payment
+    #     owner: root
+    #     # group: <groupname>
+    #     mode: '0755'
 
     - name: Execute Angular build command
       become: true
