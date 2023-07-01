@@ -50,26 +50,26 @@ export class PaymentComponent implements OnInit {
         });
     }
 
-    // submit(value: PaymentRequestModel) {
-    //     const data =
-    //         `${value.merchantId}.${value.storeId}.${value.terminalId}.${value.txId}.${value.amt}.${value.currency}.${value.timestamp}`;
-    //     console.log(data);
-    //     value.hash = this.helperService.generate(data, value.secretKey);
-    //     setTimeout( () => {
-    //         console.log('value ', value);
-    //     });
-    //     this.paymentService.callPayment(value).subscribe(
-    //         (res) => {
-    //             console.log(res);
-    //             if (res.response.code === 200) {
-    //                window.location.href = res.result.url;
-    //             } else {
-    //                 console.log(res.response);
-    //             }
-    //         },
-    //         (error) => {
-    //             console.log(error.message);
-    //         }
-    //     );
-    // }
+    submit(value: PaymentRequestModel) {
+        const data =
+            `${value.merchantId}.${value.storeId}.${value.terminalId}.${value.txId}.${value.amt}.${value.currency}.${value.timestamp}`;
+        console.log(data);
+        value.hash = this.helperService.generate(data, value.secretKey);
+        setTimeout( () => {
+            console.log('value ', value);
+        });
+        this.paymentService.callPayment(value).subscribe(
+            (res) => {
+                console.log(res);
+                if (res.response.code === 200) {
+                   window.location.href = res.result.url;
+                } else {
+                    console.log(res.response);
+                }
+            },
+            (error) => {
+                console.log(error.message);
+            }
+        );
+    }
 }
