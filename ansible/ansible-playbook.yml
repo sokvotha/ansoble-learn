@@ -45,11 +45,11 @@
       args:
         executable: /bin/bash
 
-    # - name: Install Node.js
-    #   become: true
-    #   apt:
-    #     name: nodejs
-    #     state: present
+    - name: Install Node.js
+      become: true
+      apt:
+        name: nodejs
+        state: present
 
     - name: Install npm package manager
       become: true
