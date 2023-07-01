@@ -77,9 +77,9 @@
         name: '@angular-devkit/build-angular'
         global: yes
 
-    - name: Disable the version mismatch warning
-      become: true
-      command: ng config -g cli.warnings.versionMismatch false
+    # - name: Disable the version mismatch warning
+    #   become: true
+    #   command: ng config -g cli.warnings.versionMismatch false
 
     - name: Install Angular Dependencies
       become: true
@@ -96,7 +96,7 @@
 
     - name: Execute Angular build command
       become: true
-      command: ng build --prod
+      command: npm run build
       args:
         chdir: /tmp/web-payment/
 
