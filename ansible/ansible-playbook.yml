@@ -76,13 +76,13 @@
       become: true
       command: npm install
 
-    # - name: Set directory permissions
-    #   become: true
-    #   file:
-    #     path: /tmp/web-payment
-    #     owner: root
-    #     # group: <groupname>
-    #     mode: '0755'
+    - name: Set directory permissions
+      become: true
+      file:
+        path: /tmp/web-payment
+        owner: root
+        # group: <groupname>
+        mode: '0755'
 
     - name: Execute Angular build command
       become: true
