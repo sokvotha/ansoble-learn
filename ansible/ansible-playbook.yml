@@ -43,7 +43,10 @@
 
     - name: Switch to node version 14
       become: true
-      command: nvm use 14
+      become_user: root
+      shell: "source /root/.nvm/nvm.sh && nvm use 14" 
+      # args:
+      #   executable: /bin/bash
 
     - name: Install Node.js
       become: true
