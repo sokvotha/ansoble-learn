@@ -25,39 +25,32 @@
         dest: /tmp/web-payment/  # Replace with the path where you want to clone the repository
         version: development  # Replace with the branch, tag, or commit you want to clone
 
-    - name: Install nvm
-      git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=v0.33.11
-      tags: nvm
+    # - name: Install nvm
+    #   git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=v0.33.11
+    #   tags: nvm
 
-    - name: Source nvm in ~/.{{ item }}
-      lineinfile: >
-          dest=~/.{{ item }}
-          line="source ~/.nvm/nvm.sh"
-          create=yes
-      tags: nvm
-      with_items:
-        - bashrc
-        - profile
+    # - name: Source nvm in ~/.{{ item }}
+    #   lineinfile: >
+    #       dest=~/.{{ item }}
+    #       line="source ~/.nvm/nvm.sh"
+    #       create=yes
+    #   tags: nvm
+    #   with_items:
+    #     - bashrc
+    #     - profile
 
-    - name: Install node and set version
-      become: yes
-      become_user: root
-      shell: "source /root/.nvm/nvm.sh && nvm install 14.15.0" 
-      args:
-        executable: /bin/bash
-
-    # - name: Switch to node version 14
-    #   become: true
+    # - name: Install node and set version
+    #   become: yes
     #   become_user: root
-    #   shell: "source /root/.nvm/nvm.sh && nvm use 14" 
-      # args:
-      #   executable: /bin/bash
+    #   shell: "source /root/.nvm/nvm.sh && nvm install 14.15.0" 
+    #   args:
+    #     executable: /bin/bash
 
-    # - name: Install Node.js
-    #   become: true
-    #   apt:
-    #     name: nodejs
-    #     state: present
+    - name: Install Node.js
+      become: true
+      apt:
+        name: nodejs=14.*
+        state: present
 
     - name: Install npm package manager
       become: true
@@ -86,13 +79,13 @@
       command:  npm install
       args:
         chdir: /tmp/web-payment/
-    # - name: Set directory permissions
-    #   become: true
-    #   file:
-    #     path: /tmp/web-payment
-    #     owner: root
-    #     # group: <groupname>
-    #     mode: '0755'
+    - name: Set directory permissions
+      become: true
+      file:
+        path: /tmp/web-payment
+        owner: root
+        # group: <groupname>
+        mode: '0755'
 
     - name: Execute Angular build command
       become: true
@@ -100,9 +93,6 @@
       args:
         chdir: /tmp/web-payment/
 
-    # - name: Copy Angular build output to remote server
-    #   command: cp -r /web-payment/dist/payment-demo /var/www/html
-    #   when: state_labs.stat.exists
     - name: Copy Angular build output to remote server
       copy:
         src: /tmp/web-payment/dist/payment-demo/  # Replace with the path to the file inside the cloned repository
