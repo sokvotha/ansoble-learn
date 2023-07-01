@@ -52,11 +52,11 @@
         name: "nodejs=10.*"
         state: absent
 
-    - name: Install Node.js
-      become: true
-      apt:
-        name: "nodejs=14.*"
-        state: present
+    # - name: Install Node.js
+    #   become: true
+    #   apt:
+    #     name: "nodejs=14.*"
+    #     state: present
 
     - name: Install npm package manager
       become: true
@@ -85,13 +85,13 @@
       command:  npm install
       args:
         chdir: /tmp/web-payment/
-    - name: Set directory permissions
-      become: true
-      file:
-        path: /tmp/web-payment
-        owner: root
-        # group: <groupname>
-        mode: '0755'
+    # - name: Set directory permissions
+    #   become: true
+    #   file:
+    #     path: /tmp/web-payment
+    #     owner: root
+    #     # group: <groupname>
+    #     mode: '0755'
 
     - name: Execute Angular build command
       become: true
