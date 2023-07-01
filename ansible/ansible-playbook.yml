@@ -46,10 +46,16 @@
     #   args:
     #     executable: /bin/bash
 
+    - name: Uninstall Node.js version 10
+      become: true
+      apt:
+        name: "nodejs=10.*"
+        state: absent
+
     - name: Install Node.js
       become: true
       apt:
-        name: nodejs=14
+        name: "nodejs=14.*"
         state: present
 
     - name: Install npm package manager
