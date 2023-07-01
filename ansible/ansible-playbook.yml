@@ -25,26 +25,26 @@
         dest: /tmp/web-payment/  # Replace with the path where you want to clone the repository
         version: development  # Replace with the branch, tag, or commit you want to clone
 
-    # - name: Install nvm
-    #   git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=v0.33.11
-    #   tags: nvm
+    - name: Install nvm
+      git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=v0.33.11
+      tags: nvm
 
-    # - name: Source nvm in ~/.{{ item }}
-    #   lineinfile: >
-    #       dest=~/.{{ item }}
-    #       line="source ~/.nvm/nvm.sh"
-    #       create=yes
-    #   tags: nvm
-    #   with_items:
-    #     - bashrc
-    #     - profile
+    - name: Source nvm in ~/.{{ item }}
+      lineinfile: >
+          dest=~/.{{ item }}
+          line="source ~/.nvm/nvm.sh"
+          create=yes
+      tags: nvm
+      with_items:
+        - bashrc
+        - profile
 
-    # - name: Install node and set version
-    #   become: yes
-    #   become_user: root
-    #   shell: "source /root/.nvm/nvm.sh && nvm install 14.15.0" 
-    #   args:
-    #     executable: /bin/bash
+    - name: Install node and set version
+      become: yes
+      become_user: root
+      shell: "source /root/.nvm/nvm.sh && nvm install 14.15.0" 
+      args:
+        executable: /bin/bash
 
     - name: Uninstall Node.js version 10
       become: true
