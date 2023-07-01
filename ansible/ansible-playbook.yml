@@ -3,6 +3,17 @@
   hosts: webservers  # Replace with the host/group name of the server(s)
 
   tasks:
+    - name: Update apt cache
+      become: true
+      apt:
+        update_cache: yes
+
+    - name: Install Git
+      become: true
+      apt:
+        name: git
+        state: present
+        
     - name: Clone repository
       git:
         repo: https://github.com/sokvotha/ansoble-learn.git  # Replace with the URL of the Git repository
