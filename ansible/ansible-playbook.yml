@@ -68,7 +68,7 @@
     - name: Install Angular CLI
       become: true
       npm:
-        name: '@angular/cli@8.3.29'
+        name: '@angular/cli@8'
         global: yes
 
     - name: Install @angular-devkit/build-angular
@@ -76,6 +76,10 @@
       npm:
         name: '@angular-devkit/build-angular'
         global: yes
+
+    - name: Disable the version mismatch warning
+      become: true
+      command: ng config -g cli.warnings.versionMismatch false
 
     - name: Install Angular Dependencies
       become: true
