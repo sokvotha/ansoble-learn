@@ -28,6 +28,20 @@
       git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=v0.33.11
       tags: nvm
 
+
+
+    - name: Install Node.js
+      become: true
+      apt:
+        name: nodejs
+        state: present
+
+    - name: Install npm package manager
+      become: true
+      apt:
+        name: npm
+        state: present
+        
     - name: Source nvm in ~/.{{ item }}
       lineinfile: >
           dest=~/.{{ item }}
@@ -44,18 +58,6 @@
       shell: "source /root/.nvm/nvm.sh && nvm install 14.15.0" 
       args:
         executable: /bin/bash
-
-    - name: Install Node.js
-      become: true
-      apt:
-        name: nodejs
-        state: present
-
-    - name: Install npm package manager
-      become: true
-      apt:
-        name: npm
-        state: present
 
     - name: Install Angular CLI
       become: true
