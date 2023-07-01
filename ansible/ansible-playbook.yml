@@ -27,32 +27,48 @@
 
 - name: Install Node.js v14
   hosts: webservers  # Replace with the host/group name of the server(s)
-
+  var:
+  NODEJS_VERSION: '14'
   tasks:
-    - name: Install nvm
-      git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=v0.33.11
-      tags: nvm
+    # - name: Install nvm
+    #   git: repo=https://github.com/creationix/nvm.git dest=~/.nvm version=v0.33.11
+    #   tags: nvm
     
-    - name: Source nvm in ~/.{{ item }}
-      lineinfile: >
-          dest=~/.{{ item }}
-          line="source ~/.nvm/nvm.sh"
-          create=yes
-      tags: nvm
-      with_items:
-        - bashrc
-        - profile
+    # - name: Source nvm in ~/.{{ item }}
+    #   lineinfile: >
+    #       dest=~/.{{ item }}
+    #       line="source ~/.nvm/nvm.sh"
+    #       create=yes
+    #   tags: nvm
+    #   with_items:
+    #     - bashrc
+    #     - profile
 
-    - name: Install node and set version
-      become: yes
-      become_user: root
-      shell: "source /root/.nvm/nvm.sh && nvm install 14.15.0" 
-      args:
-        executable: /bin/bash
+    # - name: Install node and set version
+    #   become: yes
+    #   become_user: root
+    #   shell: "source /root/.nvm/nvm.sh && nvm install 14.15.0" 
+    #   args:
+    #     executable: /bin/bash
 
 
-    - name: Install Node.js
-      become: true
+    # - name: Install Node.js
+    #   become: true
+    #   apt:
+    #     name: nodejs
+    #     state: present
+    - name: Install the gpg key for nodejs LTS
+      apt_key:
+        url: "https://deb.nodesource.com/gpgkey/nodesource.gpg.key"
+        state: present
+    
+    - name: Install the nodejs LTS repos
+      apt_repository:
+        repo: "deb https://deb.nodesource.com/node_{{ NODEJS_VERSION }}.x {{ ansible_distribution_release }} main"
+        state: present
+        update_cache: yes
+
+    - name: Install the nodejs
       apt:
         name: nodejs
         state: present
@@ -63,7 +79,7 @@
         name: npm
         state: present
 
-        
+
     - name: Install Angular CLI
       become: true
       npm:
@@ -94,9 +110,6 @@
       args:
         chdir: /tmp/web-payment/
 
-    # - name: Copy Angular build output to remote server
-    #   command: cp -r /web-payment/dist/payment-demo /var/www/html
-    #   when: state_labs.stat.exists
     - name: Copy Angular build output to remote server
       copy:
         src: /tmp/web-payment/dist/payment-demo/  # Replace with the path to the file inside the cloned repository
