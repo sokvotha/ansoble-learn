@@ -41,18 +41,18 @@
       args:
         executable: /bin/bash
 
-    - name: Switch to node version 14
-      become: true
-      become_user: root
-      shell: "source /root/.nvm/nvm.sh && nvm use 14" 
+    # - name: Switch to node version 14
+    #   become: true
+    #   become_user: root
+    #   shell: "source /root/.nvm/nvm.sh && nvm use 14" 
       # args:
       #   executable: /bin/bash
 
-    - name: Install Node.js
-      become: true
-      apt:
-        name: nodejs
-        state: present
+    # - name: Install Node.js
+    #   become: true
+    #   apt:
+    #     name: nodejs
+    #     state: present
 
     - name: Install npm package manager
       become: true
